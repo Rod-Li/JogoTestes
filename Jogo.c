@@ -7,7 +7,7 @@ int JogoIniciado(){
 	int Parada=0;
 	int DeckJogador=0;
 	int DeckBot=0;
-	DeckJogador = ComprarCarta();
+	DeckJogador = Jogador();
 	do{
 		int VerificarJogador
 		Jogador();
@@ -38,19 +38,6 @@ int JogoIniciado(){
 }
 
 int Jogador(){
-	ComprarCarta();
-	int DeckJogador = ComprarCarta();
-	return DeckJogador;
-}
-int Bot(){
-	srand(time(NULL)); 
-	int CartaValor = rand() %18;//Maximo do valor do deck do bot 23
-	CartaValor += 5;//Minimo do valor do deck do bot 5
-	return DeckBot;
-}
-
-
-int ComprarCarta(){
 	srand(time(NULL)); 
 	int CartaValor = rand() %10;
 	CartaValor += 1;
@@ -59,4 +46,10 @@ int ComprarCarta(){
 		CartaValor == 11;//temporario
 	}
 	return CartaValor;
+}
+int Bot(){
+	srand(time(NULL)); 
+	int CartaValor = rand() %18;//Maximo do valor do deck do bot 23
+	CartaValor += 5;//Minimo do valor do deck do bot 5
+	return DeckBot;
 }
