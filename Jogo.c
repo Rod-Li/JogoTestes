@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <conio.h>
 #include <locale.h>	
 
-int main(){
+int JogoIniciado(){
 	int Parada=0;
 	int DeckJogador=0;
 	int DeckBot=0;
+	DeckJogador = ComprarCarta();
 	do{
 		int VerificarJogador
 		Jogador();
@@ -16,7 +16,7 @@ int main(){
 			Parada=1;
 		}
 		else{
-			DeckJogador = Jogador();
+			DeckJogador += Jogador();
 		}
 	}while(Parada != 1);
 	DeckBot= Bot();
@@ -59,10 +59,4 @@ int ComprarCarta(){
 		CartaValor == 11;//temporario
 	}
 	return CartaValor;
-}
-int DelayApagar(){
-	int milli_seconds = 1000 * 2/* segundos */; 
-	clock_t start_time = clock();
-	while (clock() < milli_seconds);
-	system("cls");
 }
