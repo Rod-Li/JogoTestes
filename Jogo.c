@@ -10,20 +10,48 @@ int ComprarCarta(){
 	CartaValor += 1;
 	if(CartaValor == 11){
 		int As;
-		printf("Vc tem um As\n");
-		printf("Digite o valor da opcao\n");
-		printf("O As Vale:\nNumero 1:(1)\nNumero 11:(11)\n");
-		scanf("%d",&CartaValor);
+		do{
+			printf("Vc tem um As\n");
+			printf("Digite o valor da opcao\n");
+			printf("O As Vale:\nNumero 1:(1)\nNumero 11:(2)\n");
+			scanf("%d",&CartaValor);
+			if(CartaValor==1){
+				CartaValor=1;
+				As=1;
+			}
+			else if(CartaValor==2){
+				CartaValor=11;
+				As=1;
+			}
+			else{
+				system("cls");
+				printf("Digite Um Valor Valido\n\n");
+			}
+		}while(As!=1);
 		
 		system("cls");
 	}
 	srand(time(NULL));
 	if(CartaValor == 1){
 		int As;
-		printf("Vc tem um As\n");
-		printf("Digite o valor da opcao\n");
-		printf("O As Vale:\nNumero 1:(1)\nNumero 11:(11)\n");
-		scanf("%d",&CartaValor);
+		do{
+			printf("Vc tem um As\n");
+			printf("Digite o valor da opcao\n");
+			printf("O As Vale:\nNumero 1:(1)\nNumero 11:(2)\n");
+			scanf("%d",&CartaValor);
+			if(CartaValor==1){
+				CartaValor=1;
+				As=1;
+			}
+			else if(CartaValor==2){
+				CartaValor=11;
+				As=1;
+			}
+			else{
+				system("cls");
+				printf("Digite Um Valor Valido\n\n");
+			}
+		}while(As!=1);
 		
 		system("cls");
 	}
