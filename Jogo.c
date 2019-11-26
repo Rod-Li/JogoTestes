@@ -12,7 +12,12 @@ int main(){
 	do{
 		int VerificarJogador;
 		printf("Vc tem um total de %d\n\n", DeckJogador);
-		VerificarJogador = Jogador();
+		if(DeckJogador >20){
+			Parada=1;
+		}
+		else{
+			VerificarJogador = Jogador();
+		}
 		if(VerificarJogador == 0){
 			Parada=1;
 		}
