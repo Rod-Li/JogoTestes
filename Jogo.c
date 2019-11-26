@@ -60,11 +60,26 @@ int ComprarCarta(){
 }
 int Jogador(){
 	int SN;
-	printf("Vc quer comprar uma carta?\n");
-	printf("Sim (1)\nNao (0)\n");
-	scanf("%d",&SN);
+	int Ver=0;
+	do{
+		printf("Vc quer comprar uma carta?\n");
+		printf("Sim (1)\nNao (2)\n");
+		scanf("%d",&SN);
+		if(SN ==1){
+			SN=1;
+			Ver=1;
+		}
+		else if(SN ==2){
+			SN=2;
+			Ver=1;
+		}
+		else{
+			system("cls");
+			printf("Digite Uma Opcao Valida\n\n");
+		}
+	}while(Ver!=1);
 	system("cls");
-	if (SN == 0){
+	if (SN == 2){
 		return 0;
 	}
 	else{
