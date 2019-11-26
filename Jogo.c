@@ -4,21 +4,6 @@
 #include <conio.h>
 #include <locale.h>	
 
-int Jogador(){
-	int SN;
-	printf("Vc quer comprar uma carta?\n");
-	printf("Sim (1)\nNao (0)\n");
-	scanf("%d",&SN);
-	system("cls");
-	if (SN == 0){
-		return 0;
-	}
-	else{
-		int DeckJogador = ComprarCarta();
-		return DeckJogador;
-	}
-}
-
 int ComprarCarta(){
 	srand(time(NULL)); 
 	int CartaValor = rand() %10;
@@ -44,6 +29,20 @@ int ComprarCarta(){
 	}
 	srand(time(NULL)); 
 	return CartaValor;
+}
+int Jogador(){
+	int SN;
+	printf("Vc quer comprar uma carta?\n");
+	printf("Sim (1)\nNao (0)\n");
+	scanf("%d",&SN);
+	system("cls");
+	if (SN == 0){
+		return 0;
+	}
+	else{
+		int DeckJogador = ComprarCarta();
+		return DeckJogador;
+	}
 }
 
 int main(){
