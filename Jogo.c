@@ -4,6 +4,48 @@
 #include <conio.h>
 #include <locale.h>	
 
+int Jogador(){
+	int SN;
+	printf("Vc quer comprar uma carta?\n");
+	printf("Sim (1)\nNao (0)\n");
+	scanf("%d",&SN);
+	system("cls");
+	if (SN == 0){
+		return 0;
+	}
+	else{
+		int DeckJogador = ComprarCarta();
+		return DeckJogador;
+	}
+}
+
+int ComprarCarta(){
+	srand(time(NULL)); 
+	int CartaValor = rand() %10;
+	CartaValor += 1;
+	if(CartaValor == 11){
+		int As;
+		printf("Vc tem um As\n");
+		printf("Digite o valor da opcao\n");
+		printf("O As Vale:\nNumero 1:(1)\nNumero 11:(11)\n");
+		scanf("%d",&CartaValor);
+		
+		system("cls");
+	}
+	srand(time(NULL));
+	if(CartaValor == 1){
+		int As;
+		printf("Vc tem um As\n");
+		printf("Digite o valor da opcao\n");
+		printf("O As Vale:\nNumero 1:(1)\nNumero 11:(11)\n");
+		scanf("%d",&CartaValor);
+		
+		system("cls");
+	}
+	srand(time(NULL)); 
+	return CartaValor;
+}
+
 int main(){
 	int Parada=0;
 	int DeckJogador=0;
@@ -46,46 +88,4 @@ int main(){
 	else if(CartaBOT < DeckJogador){
 		printf("Voce Ganhou");
 	}
-}
-
-int Jogador(){
-	int SN;
-	printf("Vc quer comprar uma carta?\n");
-	printf("Sim (1)\nNao (0)\n");
-	scanf("%d",&SN);
-	system("cls");
-	if (SN == 0){
-		return 0;
-	}
-	else{
-		int DeckJogador = ComprarCarta();
-		return DeckJogador;
-	}
-}
-
-int ComprarCarta(){
-	srand(time(NULL)); 
-	int CartaValor = rand() %10;
-	CartaValor += 1;
-	if(CartaValor == 11){
-		int As;
-		printf("Vc tem um As\n");
-		printf("Digite o valor da opcao\n");
-		printf("O As Vale:\nNumero 1:(1)\nNumero 11:(11)\n");
-		scanf("%d",&CartaValor);
-		
-		system("cls");
-	}
-	srand(time(NULL));
-	if(CartaValor == 1){
-		int As;
-		printf("Vc tem um As\n");
-		printf("Digite o valor da opcao\n");
-		printf("O As Vale:\nNumero 1:(1)\nNumero 11:(11)\n");
-		scanf("%d",&CartaValor);
-		
-		system("cls");
-	}
-	srand(time(NULL)); 
-	return CartaValor;
 }
