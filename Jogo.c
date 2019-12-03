@@ -4,6 +4,20 @@
 #include <conio.h>
 #include <locale.h>	
 
+int posicaoJogo = 1;
+int teclaPressionadaJogo = 0;
+
+void setaJogo(int posicaoApontadaJogo, int posicaoDesejadaJogo){	/*FUNÃ‡ÃƒO: seta no jogo (somente o desenho, nÃ£o movimentos)*/	//posicaoApontadaJogo = posiÃ§Ã£o em que a seta aponta; posicaoDesejadaJogo = posiÃ§Ã£o que eu quero que a seta aponte
+	
+	if(posicaoApontadaJogo == posicaoDesejadaJogo){
+		printf("    %c ", 16);
+	}
+	else{
+		printf("    ");
+	}
+	
+}
+
 int ComprarCarta(){
 	srand(time(NULL)); 
 	int CartaValor = rand() %10;
@@ -13,22 +27,38 @@ int ComprarCarta(){
 		do{
 			printf("Vc tem um As\n");
 			printf("Digite o valor da opcao\n");
-			printf("O As Vale:\nNumero 1:(1)\nNumero 11:(2)\n");
-			scanf("%d",&CartaValor);
-			if(CartaValor==1){
+			printf("O As Vale:\n");
+			setaJogo(1, posicaoJogo); printf(" Numero 1\t\t");
+			setaJogo(2, posicaoJogo); printf(" Numero 11\t\t");
+			
+			teclaPressionadaJogo = getch();	
+				if(teclaPressionadaJogo == 75 && posicaoJogo == 2){		/*75 representa a tecla esquerda*/
+					printf("\a");
+					posicaoJogo--;
+				}
+				else{
+					if(teclaPressionadaJogo == 77 && posicaoJogo == 1){	/*77 representa a tecla direita*/
+						printf("\a");
+						posicaoJogo++;
+					}
+					else{
+						posicaoJogo = posicaoJogo;
+					}						
+				}
+			
+			
+			if(teclaPressionadaJogo ==13 && posicaoJogo == 1){
 				CartaValor=1;
 				As=1;
 			}
-			else if(CartaValor==2){
+			else if(teclaPressionadaJogo ==13 && posicaoJogo == 2){
 				CartaValor=11;
 				As=1;
 			}
 			else{
 				system("cls");
-				printf("Digite Um Valor Valido\n\n");
 			}
 		}while(As!=1);
-		
 		system("cls");
 	}
 	srand(time(NULL));
@@ -37,22 +67,38 @@ int ComprarCarta(){
 		do{
 			printf("Vc tem um As\n");
 			printf("Digite o valor da opcao\n");
-			printf("O As Vale:\nNumero 1:(1)\nNumero 11:(2)\n");
-			scanf("%d",&CartaValor);
-			if(CartaValor==1){
+			printf("O As Vale:\n");
+			setaJogo(1, posicaoJogo); printf(" Numero 1\t\t");
+			setaJogo(2, posicaoJogo); printf(" Numero 11\t\t");
+			
+			teclaPressionadaJogo = getch();	
+				if(teclaPressionadaJogo == 75 && posicaoJogo == 2){		/*75 representa a tecla esquerda*/
+					printf("\a");
+					posicaoJogo--;
+				}
+				else{
+					if(teclaPressionadaJogo == 77 && posicaoJogo == 1){	/*77 representa a tecla direita*/
+						printf("\a");
+						posicaoJogo++;
+					}
+					else{
+						posicaoJogo = posicaoJogo;
+					}						
+				}
+			
+			
+			if(teclaPressionadaJogo ==13 && posicaoJogo == 1){
 				CartaValor=1;
 				As=1;
 			}
-			else if(CartaValor==2){
+			else if(teclaPressionadaJogo ==13 && posicaoJogo == 2){
 				CartaValor=11;
 				As=1;
 			}
 			else{
 				system("cls");
-				printf("Digite Um Valor Valido\n\n");
 			}
 		}while(As!=1);
-		
 		system("cls");
 	}
 	srand(time(NULL)); 
@@ -61,30 +107,42 @@ int ComprarCarta(){
 int Jogador(){
 	int SN;
 	int Ver=0;
-	do{
-		printf("Vc quer comprar uma carta?\n");
-		printf("Sim (1)\nNao (2)\n");
-		scanf("%d",&SN);
-		if(SN ==1){
-			SN=1;
-			Ver=1;
-		}
-		else if(SN ==2){
-			SN=2;
-			Ver=1;
+	printf("Vc quer comprar uma carta?\n");
+	setaJogo(1, posicaoJogo); printf(" Comprar carta\t\t");
+	setaJogo(2, posicaoJogo); printf(" Terminar jogada");
+	
+	teclaPressionadaJogo = getch();	
+		if(teclaPressionadaJogo == 75 && posicaoJogo == 2){		/*75 representa a tecla esquerda*/
+			printf("\a");
+			posicaoJogo--;
 		}
 		else{
-			system("cls");
-			printf("Digite Uma Opcao Valida\n\n");
+			if(teclaPressionadaJogo == 77 && posicaoJogo == 1){	/*77 representa a tecla direita*/
+				printf("\a");
+				posicaoJogo++;
+			}
+			else{
+				posicaoJogo = posicaoJogo;
+			}						
 		}
-	}while(Ver!=1);
-	system("cls");
-	if (SN == 2){
-		return 0;
+	
+	if(teclaPressionadaJogo ==13 && posicaoJogo == 1){
+		SN=1;
+		Ver=1;
 	}
-	else{
-		int DeckJogador = ComprarCarta();
-		return DeckJogador;
+	else if(teclaPressionadaJogo ==13 && posicaoJogo == 2){
+		SN=2;
+		Ver=1;
+	}
+	system("cls");
+	if(Ver ==1){
+		if (SN == 2){
+			return 404;
+		}
+		else{
+			int DeckJogador = ComprarCarta();
+			return DeckJogador;
+		}
 	}
 }
 
@@ -102,14 +160,16 @@ int main(){
 		else{
 			VerificarJogador = Jogador();
 		}
-		if(VerificarJogador == 0){
+		if(VerificarJogador == 404){
 			Parada=1;
 		}
-		else if(DeckJogador > 20){
-			Parada=1;
-		}
-		else if(Parada==0){
-			DeckJogador += VerificarJogador;
+		else if(VerificarJogador != 0){
+			if(DeckJogador > 20){
+				Parada=1;
+			}
+			else if(Parada==0){
+				DeckJogador += VerificarJogador;
+			}
 		}
 	}while(Parada != 1);
 	srand(time(NULL)); 
