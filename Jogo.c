@@ -428,7 +428,7 @@ void consultarHighScore(){		/*FUNÇÃO: mostrar o highscore do jogo*/
 		
 		fscanf(numeros, "%d", &scoreX);
 		fgets(nomeX, 5, nomes);
-			printf("\n\n\t     1º Lugar - %d", scoreX);
+			printf("\n\n\t     HighScore - %d", scoreX);
 			printf(" - %s", nomeX);
 			
 		fclose(numeros);
