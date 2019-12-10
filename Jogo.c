@@ -244,6 +244,9 @@ int highScore(){		/*FUNÇÃO: verificar se highscore*/
 }
 
 int jogoMovimento(){		/*FUNÇÃO: jogo ? (com movimentos da seta)*/
+		numeros = fopen("HighScore.txt", "r");
+		fscanf(numeros, "%d", &high);
+		fclose(numeros);
 
 	if(teclaPressionadaMenu == 13 && posicaoMenu == 1){
 		system("Cls");
@@ -467,9 +470,6 @@ int main(){
 	setlocale(LC_ALL, "");
 
 	while(game == 0){
-		numeros = fopen("HighScore.txt", "r");
-		fscanf(numeros, "%d", &high);
-		fclose(numeros);
 		menuMovimento();
 		jogoMovimento();
 		instrucao();
