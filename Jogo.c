@@ -11,7 +11,7 @@ int game = 0; 							//game = 0,  rodando X game = 1, game over
 int posicaoMenu = 1, posicaoJogo = 1;				//posição inicial da seta no menu/jogo ("Iniciar jogo"/"Puxar carta" respectivamente)
 int teclaPressionadaMenu = 0, teclaPressionadaJogo = 0;		//teclas que vão ser pressionadas no menu/jogo (valores em ASCII)
 int score = 0;							//auxiliar que guarda o score															
-int high = 0;							//auxiliar que guarda o maior score
+int high = 0;						//auxiliar que guarda o maior score
 char nome[3];
 
 int valorCarta;							//quanto a carta vale de 1 ~ 13															
@@ -412,7 +412,7 @@ void instrucao(){		/*FUNÇÃO: mostrar as instruções do jogo*/
 
 void consultarHighScore(){		/*FUNÇÃO: mostrar o highscore do jogo*/
 	if(teclaPressionadaMenu == 13 && posicaoMenu == 3){
-		int scoreX, scoreY, scoreZ;
+		int scoreX;
 		char nomeX[3], nomeY[3], nomeZ[3];
 		 
 		system("Cls");
@@ -467,7 +467,9 @@ int main(){
 	setlocale(LC_ALL, "");
 
 	while(game == 0){
-	
+		numeros = fopen("HighScore.txt", "r");
+		fscanf(numeros, "%d", &high);
+		fclose(numeros);
 		menuMovimento();
 		jogoMovimento();
 		instrucao();
